@@ -20,6 +20,10 @@ public class Alarma {
 		this.usuariosValidosParaOperar = new HashSet<Usuario>();
 		this.accionesRealizadas = new TreeSet<Accion>();
 	}
+	
+	public void RegistrarAccion(Accion accion) {
+		this.accionesRealizadas.add(accion);
+	}
 
 	public Integer getIdAlarma() {
 		return idAlarma;
