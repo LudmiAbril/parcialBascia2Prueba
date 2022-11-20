@@ -37,5 +37,16 @@ public class test {
 		
 	}
 	
+	@Test (expected = SensorDuplicadoException.class)
+	public void alAgregarUnSensorDuplicadoAUnaAlarmaSeLanceSensorDuplicadoException() throws SensorDuplicadoException{
+		Central central=new Central("central-test");
+		Alarma alarma=new Alarma(123, "act123", "conf123", "alarmaBeep");
+		Usuario admin=new Administrador(22146345,"lali",central);
+		Sensor sensor=new Sensor(111);
+		
+		((Administrador)admin).agregarAlarma(alarma);
+		((Administrador)admin).agregarSensorALaAlarma(alarma.getIdAlarma(), alarma.getCodigoConfiguracion(), sensor);
+		((Administrador)admin).agregarSensorALaAlarma(alarma.getIdAlarma(), alarma.getCodigoConfiguracion(), sensor);
+	}
 	
 }

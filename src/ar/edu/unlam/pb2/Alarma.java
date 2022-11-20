@@ -20,7 +20,7 @@ public class Alarma {
 		this.nombreAlarma = nombreAlarma;
 		this.usuariosValidosParaOperar = new HashSet<Usuario>();
 		this.accionesRealizadas = new TreeSet<Accion>();
-		this.listaDeSensores= new TreeSet<Sensor>();
+		this.listaDeSensores= new HashSet<Sensor>();
 	}
 	
 	public void activarSensor(Integer idSensor) {
