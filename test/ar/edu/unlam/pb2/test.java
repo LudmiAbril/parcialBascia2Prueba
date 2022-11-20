@@ -25,4 +25,17 @@ public class test {
         assertTrue(((Administrador)admin).AgregarUsuario(configurador));
 	}
 
+	@Test (expected = CodigoConfiguracionIncorrectoException.class)
+	public void queAlAgregarUnUsuarioValidoAUnaAlarmaConUnCodigoDeConfiguracionInvalidoSeLanceCodigoInvalidoException() throws CodigoConfiguracionIncorrectoException {
+		Central central=new Central("central-test");
+		Alarma alarma=new Alarma(123, "act123", "conf123", "alarmaBeep");
+		Usuario admin=new Administrador(22146345,"lali",central);
+		Usuario usuario=new Usuario(123456789,"ari",central);
+		
+		((Administrador)admin).agregarAlarma(alarma);
+		((Administrador)admin).agregarUsuarioAListaDeUsuariosValidosDeUnaAlarma(usuario.getDNI(), alarma.getIdAlarma(), "codinvalido");
+		
+	}
+	
+	
 }
