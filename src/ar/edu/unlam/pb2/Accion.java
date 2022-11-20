@@ -2,15 +2,15 @@ package ar.edu.unlam.pb2;
 
 
 
-public class Accion {
-	private String idDeAccion;
+public class Accion implements Comparable<Accion> {
+	private Integer idDeAccion;
 	private Alarma alarmaSobreLaQueSeOpera;
 	private Usuario usuarioQueRealizaLaAccion;
 	private String fecha;
 	private TipoOperacion tipoDeOperacion;
 	
 	
-	public Accion(String idDeAccion, Alarma alarmaSobreLaQueSeOpera, Usuario usuarioQueRealizaLaAccion, String fecha,
+	public Accion(Integer idDeAccion, Alarma alarmaSobreLaQueSeOpera, Usuario usuarioQueRealizaLaAccion, String fecha,
 			TipoOperacion tipoDeOperacion) {
 		this.idDeAccion = idDeAccion;
 		this.alarmaSobreLaQueSeOpera = alarmaSobreLaQueSeOpera;
@@ -19,11 +19,11 @@ public class Accion {
 		this.tipoDeOperacion = tipoDeOperacion;
 	}
 
-	public String getIdDeAccion() {
+	public Integer getIdDeAccion() {
 		return idDeAccion;
 	}
 
-	public void setIdDeAccion(String idDeAccion) {
+	public void setIdDeAccion(Integer idDeAccion) {
 		this.idDeAccion = idDeAccion;
 	}
 
@@ -57,6 +57,16 @@ public class Accion {
 
 	public void setTipoDeOperacion(TipoOperacion tipoDeOperacion) {
 		this.tipoDeOperacion = tipoDeOperacion;
+	}
+
+	@Override
+	public int compareTo(Accion o) {
+		if(this.idDeAccion>o.getIdDeAccion()) {
+			return 1;
+		}
+		if(this.idDeAccion<o.getIdDeAccion()) {
+			return -1;
+		} return 0;
 	}
 
 
