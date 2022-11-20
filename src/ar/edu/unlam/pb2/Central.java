@@ -14,6 +14,14 @@ public Central(String nombre) {
 	this.usuarios=new HashSet<Usuario>();
 }
 
+public Boolean guardarUsuario(Usuario usuario) {
+	return this.usuarios.add(usuario);
+}
+
+public Boolean guardarAlarma(Alarma alarma) {
+	return this.alarmas.add(alarma);
+}
+
 public String getNombre() {
 	return nombre;
 }

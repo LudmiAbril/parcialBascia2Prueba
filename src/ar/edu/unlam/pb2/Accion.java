@@ -9,7 +9,7 @@ public class Accion {
 	private Usuario usuarioQueRealizaLaAccion;
 	private String fecha;
 	private TipoOperacion tipoDeOperacion;
-	private Map <Integer,Sensor> listaDeSensores;
+	
 	
 	public Accion(String idDeAccion, Alarma alarmaSobreLaQueSeOpera, Usuario usuarioQueRealizaLaAccion, String fecha,
 			TipoOperacion tipoDeOperacion) {
@@ -18,7 +18,6 @@ public class Accion {
 		this.usuarioQueRealizaLaAccion = usuarioQueRealizaLaAccion;
 		this.fecha = fecha;
 		this.tipoDeOperacion = tipoDeOperacion;
-		this.listaDeSensores= new TreeMap<Integer,Sensor>();
 	}
 
 	public String getIdDeAccion() {
@@ -61,13 +60,7 @@ public class Accion {
 		this.tipoDeOperacion = tipoDeOperacion;
 	}
 
-	public Map<Integer, Sensor> getListaDeSensores() {
-		return listaDeSensores;
-	}
 
-	public void setListaDeSensores(Map<Integer, Sensor> listaDeSensores) {
-		this.listaDeSensores = listaDeSensores;
-	}
 	
 	
 	

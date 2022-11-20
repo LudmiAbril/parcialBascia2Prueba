@@ -1,7 +1,9 @@
 package ar.edu.unlam.pb2;
 
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class Alarma {
@@ -11,6 +13,7 @@ public class Alarma {
 	private String nombreAlarma;
 	private Set<Usuario>usuariosValidosParaOperar;
 	private Set<Accion>accionesRealizadas;
+	private Map <Integer,Sensor> listaDeSensores;
 	
 	public Alarma(Integer idAlarma, String codActivacionODesactivacion, String codigoConfiguracion, String nombreAlarma) {
 		this.idAlarma = idAlarma;
@@ -19,9 +22,19 @@ public class Alarma {
 		this.nombreAlarma = nombreAlarma;
 		this.usuariosValidosParaOperar = new HashSet<Usuario>();
 		this.accionesRealizadas = new TreeSet<Accion>();
+		this.listaDeSensores= new TreeMap<Integer,Sensor>();
 	}
 	
-	public void RegistrarAccion(Accion accion) {
+	public boolean ActivarDesactivar() {
+		for(Map.Entry<Integer,Sensor> entry : listaDeSensores.entrySet()) {
+			if(entry.getValue().getEstado()==false) {
+				return false;
+			}
+		} 
+		return true;
+	}
+	
+	public void registrarAccion(Accion accion) {
 		this.accionesRealizadas.add(accion);
 	}
 
@@ -71,6 +84,14 @@ public class Alarma {
 
 	public void setAccionesRealizadas(Set<Accion> accionesRealizadas) {
 		this.accionesRealizadas = accionesRealizadas;
+	}
+
+	public Map<Integer, Sensor> getListaDeSensores() {
+		return listaDeSensores;
+	}
+
+	public void setListaDeSensores(Map<Integer, Sensor> listaDeSensores) {
+		this.listaDeSensores = listaDeSensores;
 	}
 	
 	
