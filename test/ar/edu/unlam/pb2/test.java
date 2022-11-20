@@ -14,5 +14,15 @@ public class test {
 		
 		assertTrue(((Administrador)admin).agregarAlarma(alarma));
 	}
+	
+	@Test
+	public void queSePuedaAgregarUnUsuarioConfiguradorAUnaAlarma() {
+		Central central=new Central("central-test");
+		Usuario admin=new Administrador(22146345,"lali",central);
+		Usuario configurador=new Configurador(123456789,"pepe",central);
+		
+		
+        assertTrue(((Administrador)admin).AgregarUsuario(configurador));
+	}
 
 }
