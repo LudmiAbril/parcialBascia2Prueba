@@ -1,9 +1,7 @@
 package ar.edu.unlam.pb2;
 
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class Alarma {
@@ -13,7 +11,7 @@ public class Alarma {
 	private String nombreAlarma;
 	private Set<Usuario>usuariosValidosParaOperar;
 	private Set<Accion>accionesRealizadas;
-	private Map <Integer,Sensor> listaDeSensores;
+	private Set <Sensor> listaDeSensores;
 	
 	public Alarma(Integer idAlarma, String codActivacionODesactivacion, String codigoConfiguracion, String nombreAlarma) {
 		this.idAlarma = idAlarma;
@@ -22,12 +20,28 @@ public class Alarma {
 		this.nombreAlarma = nombreAlarma;
 		this.usuariosValidosParaOperar = new HashSet<Usuario>();
 		this.accionesRealizadas = new TreeSet<Accion>();
-		this.listaDeSensores= new TreeMap<Integer,Sensor>();
+		this.listaDeSensores= new TreeSet<Sensor>();
+	}
+	
+	public void activarSensor(Integer idSensor) {
+		for(Sensor e:this.listaDeSensores) {
+			if(e.getIdSensor().equals(idSensor)) {
+				e.setEstado(true);
+			}
+		}
+	}
+	
+	public Boolean agregarSensor(Sensor sensor) {
+		return this.listaDeSensores.add(sensor);
+	}
+	
+	public boolean agregarUsuariovalido(Usuario usuario) {
+		return this.usuariosValidosParaOperar.add(usuario);
 	}
 	
 	public boolean ActivarDesactivar() {
-		for(Map.Entry<Integer,Sensor> entry : listaDeSensores.entrySet()) {
-			if(entry.getValue().getEstado()==false) {
+		for(Sensor e: this.listaDeSensores) {
+			if(e.getEstado()==false) {
 				return false;
 			}
 		} 
@@ -86,13 +100,14 @@ public class Alarma {
 		this.accionesRealizadas = accionesRealizadas;
 	}
 
-	public Map<Integer, Sensor> getListaDeSensores() {
+	public Set<Sensor> getListaDeSensores() {
 		return listaDeSensores;
 	}
 
-	public void setListaDeSensores(Map<Integer, Sensor> listaDeSensores) {
+	public void setListaDeSensores(Set<Sensor> listaDeSensores) {
 		this.listaDeSensores = listaDeSensores;
 	}
+
 	
 	
 	

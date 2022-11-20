@@ -1,6 +1,6 @@
 package ar.edu.unlam.pb2;
 
-import java.util.Map;
+
 
 public class Activador extends Usuario implements Activable {
 

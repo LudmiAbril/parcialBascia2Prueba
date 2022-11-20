@@ -14,6 +14,22 @@ public Central(String nombre) {
 	this.usuarios=new HashSet<Usuario>();
 }
 
+public Usuario buscarUsuarioDni(Integer dni) {
+	for(Usuario u:usuarios) {
+		if(u.getDNI().equals(dni)) {
+			return u;
+		}
+	} return null;
+}
+
+public Alarma buscarAlarmaPorId(Integer id) {
+	for(Alarma a:alarmas) {
+		if(a.getIdAlarma().equals(id)) {
+			return a;
+		}
+	} return null;
+}
+
 public Boolean guardarUsuario(Usuario usuario) {
 	return this.usuarios.add(usuario);
 }
